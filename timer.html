@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+        .btn{
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .btn:hover{
+            background-color: rgb(155, 155, 233);
+        }
+        
+    </style>
+</head>
+<body>
+   
+
+    <h2>It is a Countdown timer </h2>
+
+    <label for="time">Enter number of seconds : </label>
+    <input type="number" id="time"> <br>
+
+    <button onclick="startTimer()" class="btn">Start Timer </button>
+
+    <div id="timer" style="margin-top: 20px; display: none; ">00:00:00</div>
+    <script>
+        function startTimer(){
+            var seconds = document.getElementById("time").value;
+
+            if(seconds <= 0 || seconds =="")
+            {
+                return alert("Please enter valid number of seconds.");
+            }
+
+            document.querySelector('div').style.display = 'none';
+
+            var CountdownTimer = setInterval(function() {
+
+                var hours = Math.floor(seconds/3600);
+                var min = Math.floor((seconds%3600)/60);
+                var Sec = Math.floor(seconds%60);
+
+                var timeFormat = (hours < 10 ? "0"+ hours:hours)+ ":"+ (min < 10 ? "0"+ min:min)+ ":"+ (Sec < 10 ? "0"+ Sec:Sec);
+                 document.querySelector("div").style.display="block";
+                document.getElementById("timer").innerText = timeFormat;
+               
+
+                seconds--;
+                if(seconds < 0){
+                    clearInterval(CountdownTimer);
+
+                    document.getElementById("timer").innerText= "Time's up";
+
+                }
+                
+
+            },1000);
+       
+        }
+        
+    </script>
+</body>
+</html>
