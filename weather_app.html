@@ -83,7 +83,7 @@
     <script>
         document.getElementById('getWeatherBtn').addEventListener('click', function() {
         const city = document.getElementById('cityInput').value;
-       // const apiKey = 'e3f9abb2f1a5f2d967b4ce47a6a4fad0';  // Replace with your actual API key from OpenWeatherMap
+        const apiKey = 'e3f9abb2f1a5f2d967b4ce47a6a4fad0';  // Replace with your actual API key from OpenWeatherMap
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
         
         if (city === '') {
